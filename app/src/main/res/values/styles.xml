@@ -1,11 +1,184 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textViewStyle">@style/TextFontStyle</item>
+        <item name="android:buttonStyle">@style/ButtonFontStyle</item>
+        <item name="android:editTextStyle">@style/EditTextFontStyle</item>
+    </style>
+
+    <!--    Font Family Style-->
+    <style name="TextFontStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+    </style>
+
+    <style name="ButtonFontStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+    </style>
+
+    <style name="EditTextFontStyle" parent="android:Widget.EditText">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+    </style>
+
+    <!--    Bottom Nav Style-->
+
+    <style name="BottomNavStyle">
+        <item name="itemIconTint">@color/bottom_nav_color</item>
+        <item name="itemTextColor">@color/bottom_nav_color</item>
+        <item name="labelVisibilityMode">selected</item>
+        <item name="android:background">@drawable/bottom_nav_background</item>
+        <item name="menu">@menu/bottom_nav_menu</item>
+        <item name="android:elevation">@dimen/elevation</item>
+    </style>
+
+    <!--    Text title-->
+    <style name="BannerTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="SubHeaderTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/nunito_sans_semibold</item>
+    </style>
+
+    <style name="ButtonTextSeeAll">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:drawablePadding">@dimen/half_padding</item>
+        <item name="android:drawableTint">@color/colorAccent</item>
+        <item name="android:drawableEnd">@drawable/ic_see_all</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="ButtonTextReadMore" parent="ButtonTextSeeAll">
+        <item name="android:drawableEnd">@null</item>
+    </style>
+
+    <!--    Item -->
+
+    <style name="PrimaryItemTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="PrimaryItemGenre">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/nunito_sans_light</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="PrimaryItemRating">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/nunito_sans_semibold</item>
+        <item name="android:layout_marginStart">@dimen/quarter_margin</item>
+    </style>
+
+    <style name="ItemTitle" parent="PrimaryItemTitle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="ItemGenre" parent="PrimaryItemGenre">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ItemRating" parent="PrimaryItemRating">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="VerticalItemTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="VerticalItemGenre">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/nunito_sans_light</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="VerticalItemRelease">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/nunito_sans_light</item>
+    </style>
+
+    <style name="VerticalItemRating">
+        <item name="android:fontFamily">@font/nunito_sans_semibold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:max">1</item>
+    </style>
+
+    <!--    TabLayout Style-->
+    <style name="FavoriteTabLayout">
+        <item name="android:background">@drawable/tab_layout_background</item>
+        <item name="tabSelectedTextColor">@color/colorAccent</item>
+        <item name="tabTextColor">@color/white</item>
+        <item name="tabRippleColor">@color/colorAccent</item>
+        <item name="tabMinWidth">100dp</item>
+    </style>
+
+    <!--    Detail Style-->
+    <style name="DetailHeaderTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="DetailSubHeaderTitle" parent="DetailHeaderTitle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/nunito_sans_light</item>
+    </style>
+
+    <style name="DetailTitle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+    </style>
+
+    <style name="DetailSubTitle" parent="DetailTitle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/nunito_sans_semibold</item>
+    </style>
+
+    <style name="DetailText" parent="DetailSubTitle">
+        <item name="android:fontFamily">@font/nunito_sans_light</item>
+    </style>
+
+    <!--    Poster Style-->
+    <style name="ImagePoster">
+        <item name="riv_corner_radius">@dimen/radius</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <!--    Chip Style-->
+    <style name="ChipGenreItem">
+        <item name="chipBackgroundColor">@color/transparent</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="chipStrokeColor">@color/colorAccent</item>
+        <item name="chipStrokeWidth">2dp</item>
     </style>
 
 </resources>

@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Meersani</string>
+    <string name="movies">Movies</string>
+    <string name="series">Series</string>
+    <string name="favorites">Favorites</string>
+
+    <string name="movies_banner">Movies Banner</string>
+    <string name="settings">Settings</string>
+    <string name="search">Search</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="see_all">See all</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="now_airing">Now Airing</string>
+    <string name="detail_item_banner">Detail Item Banner</string>
+    <string name="rating">Rating</string>
+    <string name="runtime">Runtime</string>
+    <string name="cast">Cast</string>
+    <string name="back">Back</string>
+    <string name="description">Description</string>
+    <string name="dummy_text">\t\tGet a list of movies in theatres. This is a release type query that looks for all movies that have a release type of 2 or 3 within the specified date range.You can optionally specify a region prameter which will narrow the search to only look for theatrical release dates within the specified country.</string>
+    <string name="detail_text_format">\t\t%s</string>
+    <string name="read_more">Read More</string>
+    <string name="budget">Budget</string>
+    <string name="revenue">Revenue</string>
+    <string name="overview">Overview</string>
+    <string name="production">Production</string>
+    <string name="recommendations">Recommendations</string>
 </resources>
