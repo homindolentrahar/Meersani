@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            tools:context=".ui.DetailItemActivity">
+
+            <com.github.florent37.shapeofview.shapes.ArcView
+                android:id="@+id/img_backdrop_layout"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shape_arc_cropDirection="outside"
+                app:shape_arc_height="20dp"
+                app:shape_arc_position="bottom">
+
+                <ImageView
+                    android:id="@+id/img_backdrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/detail_item_banner"
+                    android:scaleType="centerCrop"
+                    tools:src="@color/colorPrimary" />
+
+            </com.github.florent37.shapeofview.shapes.ArcView>
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:contentDescription="@string/back"
+                android:src="@drawable/ic_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btn_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin"
+                android:contentDescription="@string/settings"
+                android:src="@drawable/ic_cog"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btn_back" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/DetailHeaderTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/half_margin"
+                android:layout_marginEnd="@dimen/half_margin"
+                app:layout_constraintBottom_toTopOf="@id/tv_release"
+                tools:text="Once Upon A Time On Deadpool" />
+
+            <TextView
+                android:id="@+id/tv_release"
+                style="@style/DetailSubHeaderTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/half_margin"
+                app:layout_constraintBottom_toTopOf="@id/img_poster"
+                app:layout_constraintEnd_toEndOf="@id/tv_title"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                tools:text="19 November 2019" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_poster"
+                style="@style/ImagePoster"
+                android:layout_width="125dp"
+                android:layout_height="160dp"
+                app:layout_constraintBottom_toBottomOf="@id/img_backdrop_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_backdrop_layout"
+                tools:src="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/text_rating"
+                style="@style/DetailSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_margin"
+                android:text="@string/rating"
+                app:layout_constraintEnd_toStartOf="@id/img_poster"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_backdrop_layout" />
+
+            <TextView
+                android:id="@+id/tv_rating"
+                style="@style/DetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/quarter_margin"
+                app:layout_constraintEnd_toEndOf="@id/text_rating"
+                app:layout_constraintStart_toStartOf="@id/text_rating"
+                app:layout_constraintTop_toBottomOf="@id/text_rating"
+                tools:text="95" />
+
+            <TextView
+                android:id="@+id/text_budget_or_episodes"
+                style="@style/DetailSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_margin"
+                android:text="@string/budget"
+                app:layout_constraintEnd_toStartOf="@id/img_poster"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_rating" />
+
+            <TextView
+                android:id="@+id/tv_budget_or_episodes"
+                style="@style/DetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/quarter_margin"
+                app:layout_constraintEnd_toEndOf="@id/text_budget_or_episodes"
+                app:layout_constraintStart_toStartOf="@id/text_budget_or_episodes"
+                app:layout_constraintTop_toBottomOf="@id/text_budget_or_episodes"
+                tools:text="$140,000" />
+
+            <TextView
+                android:id="@+id/text_runtime"
+                style="@style/DetailSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/runtime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_poster"
+                app:layout_constraintTop_toTopOf="@id/text_rating" />
+
+            <TextView
+                android:id="@+id/tv_runtime"
+                style="@style/DetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/text_runtime"
+                app:layout_constraintStart_toStartOf="@id/text_runtime"
+                app:layout_constraintTop_toTopOf="@id/tv_rating"
+                tools:text="125 min" />
+
+            <TextView
+                android:id="@+id/text_revenue_seasons"
+                style="@style/DetailSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/revenue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_poster"
+                app:layout_constraintTop_toTopOf="@id/text_budget_or_episodes" />
+
+            <TextView
+                android:id="@+id/tv_revenue_seasons"
+                style="@style/DetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/text_revenue_seasons"
+                app:layout_constraintStart_toStartOf="@id/text_revenue_seasons"
+                app:layout_constraintTop_toTopOf="@id/tv_budget_or_episodes"
+                tools:text="$256,000" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_genre_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                app:chipSpacing="@dimen/half_margin"
+                app:layout_constraintEnd_toEndOf="@id/tv_title"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_budget_or_episodes">
+
+                <com.google.android.material.chip.Chip
+                    style="@style/ChipGenreItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Action" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/ChipGenreItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sci-Fi" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/ChipGenreItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adventure" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/ChipGenreItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Horror" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/text_cast"
+                style="@style/DetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/cast"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chip_genre_group" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list_cast"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/quarter_margin"
+                android:layout_marginEnd="@dimen/margin"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/text_cast"
+                app:layout_constraintTop_toBottomOf="@id/text_cast"
+                tools:listitem="@layout/cast_list_item" />
+
+            <TextView
+                android:id="@+id/text_overview"
+                style="@style/DetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/overview"
+                app:layout_constraintStart_toStartOf="@id/rv_list_cast"
+                app:layout_constraintTop_toBottomOf="@id/rv_list_cast" />
+
+            <TextView
+                android:id="@+id/tv_overview"
+                style="@style/DetailText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/quarter_margin"
+                android:ellipsize="end"
+                android:maxLines="3"
+                app:layout_constraintEnd_toEndOf="@id/rv_list_cast"
+                app:layout_constraintStart_toStartOf="@id/text_overview"
+                app:layout_constraintTop_toBottomOf="@id/text_overview"
+                tools:text="@string/dummy_text" />
+
+            <TextView
+                android:id="@+id/btn_text_read_more"
+                style="@style/ButtonTextReadMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/quarter_margin"
+                android:text="@string/read_more"
+                app:layout_constraintStart_toStartOf="@id/tv_overview"
+                app:layout_constraintTop_toBottomOf="@id/tv_overview" />
+
+            <TextView
+                android:id="@+id/text_production"
+                style="@style/DetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/production"
+                app:layout_constraintStart_toStartOf="@id/btn_text_read_more"
+                app:layout_constraintTop_toBottomOf="@id/btn_text_read_more" />
+
+            <TextView
+                android:id="@+id/tv_production"
+                style="@style/DetailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/quarter_margin"
+                app:layout_constraintStart_toStartOf="@id/text_production"
+                app:layout_constraintTop_toBottomOf="@id/text_production"
+                tools:text="Universal Studio, K2, Ubisoft Montana" />
+
+            <TextView
+                android:id="@+id/text_recommendations"
+                style="@style/DetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/recommendations"
+                app:layout_constraintStart_toStartOf="@id/tv_production"
+                app:layout_constraintTop_toBottomOf="@id/tv_production" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list_recommendations"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/rv_list_cast"
+                app:layout_constraintStart_toStartOf="@id/text_recommendations"
+                app:layout_constraintTop_toBottomOf="@id/text_recommendations"
+                tools:listitem="@layout/normal_list_item" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

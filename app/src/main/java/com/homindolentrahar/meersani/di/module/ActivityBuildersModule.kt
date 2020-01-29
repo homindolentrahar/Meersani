@@ -1,6 +1,6 @@
 package com.homindolentrahar.meersani.di.module
 
-import com.homindolentrahar.meersani.ui.MainActivity
+import com.homindolentrahar.meersani.ui.main.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

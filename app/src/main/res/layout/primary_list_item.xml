@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/quarter_margin"
+        android:layout_marginEnd="@dimen/quarter_margin"
+        app:cardBackgroundColor="@color/transparent"
+        app:cardCornerRadius="@dimen/radius"
+        app:cardElevation="@dimen/elevation">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_poster"
+                android:layout_width="160dp"
+                android:layout_height="195dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_corner_radius="@dimen/radius"
+                tools:src="@color/colorAccent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/rating_wrapper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rating_background"
+                android:padding="@dimen/quarter_padding"
+                app:layout_constraintStart_toStartOf="@id/img_poster"
+                app:layout_constraintTop_toTopOf="@id/img_poster">
+
+                <ImageView
+                    android:id="@+id/img_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_star"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_rating"
+                    style="@style/PrimaryItemRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/img_rating"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="9.5" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/PrimaryItemTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/quarter_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/img_poster"
+                app:layout_constraintTop_toBottomOf="@id/img_poster"
+                tools:text="Deadpool" />
+
+            <TextView
+                android:id="@+id/tv_genre"
+                style="@style/PrimaryItemGenre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                tools:text="Action, Adventure, Sci-Fi, Gore" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
