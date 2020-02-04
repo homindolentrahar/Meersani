@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark"
-            tools:context=".ui.DetailItemActivity">
+            tools:context=".ui.detail.DetailItemActivity">
 
             <com.github.florent37.shapeofview.shapes.ArcView
                 android:id="@+id/img_backdrop_layout"
@@ -99,11 +99,12 @@
             <TextView
                 android:id="@+id/tv_rating"
                 style="@style/DetailTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/quarter_margin"
-                app:layout_constraintEnd_toEndOf="@id/text_rating"
-                app:layout_constraintStart_toStartOf="@id/text_rating"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/img_poster"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_rating"
                 tools:text="95" />
 
@@ -121,11 +122,12 @@
             <TextView
                 android:id="@+id/tv_budget_or_episodes"
                 style="@style/DetailTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/quarter_margin"
-                app:layout_constraintEnd_toEndOf="@id/text_budget_or_episodes"
-                app:layout_constraintStart_toStartOf="@id/text_budget_or_episodes"
+                android:gravity="center"
+                app:layout_constraintEnd_toStartOf="@id/img_poster"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_budget_or_episodes"
                 tools:text="$140,000" />
 
@@ -142,10 +144,11 @@
             <TextView
                 android:id="@+id/tv_runtime"
                 style="@style/DetailTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@id/text_runtime"
-                app:layout_constraintStart_toStartOf="@id/text_runtime"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_poster"
                 app:layout_constraintTop_toTopOf="@id/tv_rating"
                 tools:text="125 min" />
 
@@ -162,10 +165,11 @@
             <TextView
                 android:id="@+id/tv_revenue_seasons"
                 style="@style/DetailTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@id/text_revenue_seasons"
-                app:layout_constraintStart_toStartOf="@id/text_revenue_seasons"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_poster"
                 app:layout_constraintTop_toTopOf="@id/tv_budget_or_episodes"
                 tools:text="$256,000" />
 
@@ -178,30 +182,6 @@
                 app:layout_constraintEnd_toEndOf="@id/tv_title"
                 app:layout_constraintStart_toStartOf="@id/tv_title"
                 app:layout_constraintTop_toBottomOf="@id/tv_budget_or_episodes">
-
-                <com.google.android.material.chip.Chip
-                    style="@style/ChipGenreItem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Action" />
-
-                <com.google.android.material.chip.Chip
-                    style="@style/ChipGenreItem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sci-Fi" />
-
-                <com.google.android.material.chip.Chip
-                    style="@style/ChipGenreItem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Adventure" />
-
-                <com.google.android.material.chip.Chip
-                    style="@style/ChipGenreItem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Horror" />
 
             </com.google.android.material.chip.ChipGroup>
 
@@ -244,10 +224,11 @@
                 style="@style/DetailText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/quarter_margin"
+                android:layout_marginTop="8dp"
                 android:ellipsize="end"
                 android:maxLines="3"
                 app:layout_constraintEnd_toEndOf="@id/rv_list_cast"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@id/text_overview"
                 app:layout_constraintTop_toBottomOf="@id/text_overview"
                 tools:text="@string/dummy_text" />
@@ -259,6 +240,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/quarter_margin"
                 android:text="@string/read_more"
+                android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="@id/tv_overview"
                 app:layout_constraintTop_toBottomOf="@id/tv_overview" />
 
@@ -275,9 +257,10 @@
             <TextView
                 android:id="@+id/tv_production"
                 style="@style/DetailText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/quarter_margin"
+                app:layout_constraintEnd_toEndOf="@id/tv_overview"
                 app:layout_constraintStart_toStartOf="@id/text_production"
                 app:layout_constraintTop_toBottomOf="@id/text_production"
                 tools:text="Universal Studio, K2, Ubisoft Montana" />

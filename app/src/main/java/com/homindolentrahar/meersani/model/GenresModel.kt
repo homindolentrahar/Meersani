@@ -1,0 +1,15 @@
+package com.homindolentrahar.meersani.model
+
+import com.google.gson.annotations.SerializedName
+
+data class GenresResponse(
+    @SerializedName("genres")
+    val genres: List<GenresResult>
+)
+
+data class GenresResult(
+    @SerializedName("id")
+    val id: Int,
+    @SerializedName("name")
+    val name: String
+)

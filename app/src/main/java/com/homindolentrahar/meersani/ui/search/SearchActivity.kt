@@ -1,4 +1,4 @@
-package com.homindolentrahar.meersani.ui
+package com.homindolentrahar.meersani.ui.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -181,4 +181,10 @@
         <item name="chipStrokeWidth">2dp</item>
     </style>
 
+    <!--    Progress bar -->
+    <style name="ProgressBarStyle">
+        <item name="indicatorColor">@color/colorAccent</item>
+        <item name="indicatorName">BallPulseSyncIndicator"</item>
+    </style>
+
 </resources>

@@ -64,141 +64,141 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/btn_settings" />
 
-        <!--        Now Playing -->
+        <!--Today Airing-->
 
         <TextView
-            android:id="@+id/text_now_airing"
+            android:id="@+id/text_today_airing"
             style="@style/SubHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
             android:layout_marginTop="@dimen/margin"
-            android:text="@string/now_airing"
+            android:text="@string/today_airing"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_banner_layout" />
 
         <TextView
-            android:id="@+id/btn_text_see_all_now_playing"
+            android:id="@+id/btn_text_see_all_today_airing"
             style="@style/ButtonTextSeeAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/half_margin"
             android:text="@string/see_all"
-            app:layout_constraintBottom_toBottomOf="@id/text_now_airing"
+            app:layout_constraintBottom_toBottomOf="@id/text_today_airing"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_list_now_playing"
+            android:id="@+id/rv_list_today_airing"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/half_margin"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@id/btn_text_see_all_now_playing"
-            app:layout_constraintStart_toStartOf="@id/text_now_airing"
-            app:layout_constraintTop_toBottomOf="@id/text_now_airing"
+            app:layout_constraintEnd_toEndOf="@id/btn_text_see_all_today_airing"
+            app:layout_constraintStart_toStartOf="@id/text_today_airing"
+            app:layout_constraintTop_toBottomOf="@id/text_today_airing"
             tools:listitem="@layout/primary_list_item" />
 
         <!--        Upcoming -->
 
         <TextView
-            android:id="@+id/text_upcoming"
+            android:id="@+id/text_on_air"
             style="@style/SubHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
-            android:text="@string/upcoming"
-            app:layout_constraintStart_toStartOf="@id/rv_list_now_playing"
-            app:layout_constraintTop_toBottomOf="@id/rv_list_now_playing" />
+            android:text="@string/on_air"
+            app:layout_constraintStart_toStartOf="@id/rv_list_today_airing"
+            app:layout_constraintTop_toBottomOf="@id/rv_list_today_airing" />
 
         <TextView
-            android:id="@+id/btn_text_see_all_upcoming"
+            android:id="@+id/btn_text_see_all_on_air"
             style="@style/ButtonTextSeeAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/half_margin"
             android:text="@string/see_all"
-            app:layout_constraintBottom_toBottomOf="@id/text_upcoming"
+            app:layout_constraintBottom_toBottomOf="@id/text_on_air"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_list_upcoming"
+            android:id="@+id/rv_list_on_air"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/half_margin"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@id/btn_text_see_all_upcoming"
-            app:layout_constraintStart_toStartOf="@id/text_upcoming"
-            app:layout_constraintTop_toBottomOf="@id/text_upcoming"
+            app:layout_constraintEnd_toEndOf="@id/btn_text_see_all_on_air"
+            app:layout_constraintStart_toStartOf="@id/text_on_air"
+            app:layout_constraintTop_toBottomOf="@id/text_on_air"
             tools:listitem="@layout/normal_list_item" />
 
         <!--        Popular -->
 
         <TextView
-            android:id="@+id/text_popular"
+            android:id="@+id/text_popular_series"
             style="@style/SubHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
             android:text="@string/popular"
-            app:layout_constraintStart_toStartOf="@id/rv_list_upcoming"
-            app:layout_constraintTop_toBottomOf="@id/rv_list_upcoming" />
+            app:layout_constraintStart_toStartOf="@id/rv_list_on_air"
+            app:layout_constraintTop_toBottomOf="@id/rv_list_on_air" />
 
         <TextView
-            android:id="@+id/btn_text_see_all_popular"
+            android:id="@+id/btn_text_see_all_popular_series"
             style="@style/ButtonTextSeeAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/half_margin"
             android:text="@string/see_all"
-            app:layout_constraintBottom_toBottomOf="@id/text_popular"
+            app:layout_constraintBottom_toBottomOf="@id/text_popular_series"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_list_popular"
+            android:id="@+id/rv_list_popular_series"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/half_margin"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@id/btn_text_see_all_upcoming"
-            app:layout_constraintStart_toStartOf="@id/text_popular"
-            app:layout_constraintTop_toBottomOf="@id/text_popular"
+            app:layout_constraintEnd_toEndOf="@id/btn_text_see_all_popular_series"
+            app:layout_constraintStart_toStartOf="@id/text_popular_series"
+            app:layout_constraintTop_toBottomOf="@id/text_popular_series"
             tools:listitem="@layout/normal_list_item" />
 
         <!--        Top Rated -->
 
         <TextView
-            android:id="@+id/text_top_rated"
+            android:id="@+id/text_top_rated_series"
             style="@style/SubHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
             android:text="@string/top_rated"
-            app:layout_constraintStart_toStartOf="@id/rv_list_popular"
-            app:layout_constraintTop_toBottomOf="@id/rv_list_popular" />
+            app:layout_constraintStart_toStartOf="@id/rv_list_popular_series"
+            app:layout_constraintTop_toBottomOf="@id/rv_list_popular_series" />
 
         <TextView
-            android:id="@+id/btn_text_see_all_top_rated"
+            android:id="@+id/btn_text_see_all_top_rated_series"
             style="@style/ButtonTextSeeAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/half_margin"
             android:text="@string/see_all"
-            app:layout_constraintBottom_toBottomOf="@id/text_popular"
+            app:layout_constraintBottom_toBottomOf="@id/text_top_rated_series"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_list_top_rated"
+            android:id="@+id/rv_list_top_rated_series"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/half_margin"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@id/btn_text_see_all_upcoming"
-            app:layout_constraintStart_toStartOf="@id/text_top_rated"
-            app:layout_constraintTop_toBottomOf="@id/text_top_rated"
+            app:layout_constraintEnd_toEndOf="@id/btn_text_see_all_top_rated_series"
+            app:layout_constraintStart_toStartOf="@id/text_top_rated_series"
+            app:layout_constraintTop_toBottomOf="@id/text_top_rated_series"
             tools:listitem="@layout/normal_list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

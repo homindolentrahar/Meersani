@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:padding="@dimen/padding"
-    tools:context=".ui.SearchActivity">
+    tools:context=".ui.search.SearchActivity">
 
     <com.arlib.floatingsearchview.FloatingSearchView
         android:id="@+id/search_bar"
@@ -25,16 +25,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_bar"
         tools:listitem="@layout/vertical_list_item" />
-
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:indicatorColor="@color/colorAccent"
-        app:indicatorName="BallPulseSyncIndicator"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

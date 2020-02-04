@@ -9,8 +9,7 @@
         android:layout_marginTop="@dimen/half_margin"
         android:layout_marginEnd="@dimen/half_margin"
         app:cardBackgroundColor="@color/transparent"
-        app:cardCornerRadius="@dimen/radius"
-        app:cardElevation="@dimen/elevation">
+        app:cardCornerRadius="@dimen/radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

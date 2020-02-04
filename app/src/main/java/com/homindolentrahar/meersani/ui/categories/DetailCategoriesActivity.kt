@@ -1,13 +1,13 @@
-package com.homindolentrahar.meersani.ui
+package com.homindolentrahar.meersani.ui.categories
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.homindolentrahar.meersani.R
 
-class DetailItemActivity : AppCompatActivity() {
+class DetailCategoriesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_item)
+        setContentView(R.layout.activity_detail_categories)
     }
 }

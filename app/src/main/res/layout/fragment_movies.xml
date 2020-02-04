@@ -136,7 +136,7 @@
         <!--        Popular -->
 
         <TextView
-            android:id="@+id/text_popular"
+            android:id="@+id/text_popular_movies"
             style="@style/SubHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -146,59 +146,59 @@
             app:layout_constraintTop_toBottomOf="@id/rv_list_upcoming" />
 
         <TextView
-            android:id="@+id/btn_text_see_all_popular"
+            android:id="@+id/btn_text_see_all_popular_movies"
             style="@style/ButtonTextSeeAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/half_margin"
             android:text="@string/see_all"
-            app:layout_constraintBottom_toBottomOf="@id/text_popular"
+            app:layout_constraintBottom_toBottomOf="@id/text_popular_movies"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_list_popular"
+            android:id="@+id/rv_list_popular_movies"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/half_margin"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@id/btn_text_see_all_upcoming"
-            app:layout_constraintStart_toStartOf="@id/text_popular"
-            app:layout_constraintTop_toBottomOf="@id/text_popular"
+            app:layout_constraintEnd_toEndOf="@id/btn_text_see_all_popular_movies"
+            app:layout_constraintStart_toStartOf="@id/text_popular_movies"
+            app:layout_constraintTop_toBottomOf="@id/text_popular_movies"
             tools:listitem="@layout/normal_list_item" />
 
         <!--        Top Rated -->
 
         <TextView
-            android:id="@+id/text_top_rated"
+            android:id="@+id/text_top_rated_movies"
             style="@style/SubHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
             android:text="@string/top_rated"
-            app:layout_constraintStart_toStartOf="@id/rv_list_popular"
-            app:layout_constraintTop_toBottomOf="@id/rv_list_popular" />
+            app:layout_constraintStart_toStartOf="@id/rv_list_popular_movies"
+            app:layout_constraintTop_toBottomOf="@id/rv_list_popular_movies" />
 
         <TextView
-            android:id="@+id/btn_text_see_all_top_rated"
+            android:id="@+id/btn_text_see_all_top_rated_movies"
             style="@style/ButtonTextSeeAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/half_margin"
             android:text="@string/see_all"
-            app:layout_constraintBottom_toBottomOf="@id/text_popular"
+            app:layout_constraintBottom_toBottomOf="@id/text_top_rated_movies"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_list_top_rated"
+            android:id="@+id/rv_list_top_rated_movies"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/half_margin"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@id/btn_text_see_all_upcoming"
-            app:layout_constraintStart_toStartOf="@id/text_top_rated"
-            app:layout_constraintTop_toBottomOf="@id/text_top_rated"
+            app:layout_constraintEnd_toEndOf="@id/btn_text_see_all_top_rated_movies"
+            app:layout_constraintStart_toStartOf="@id/text_top_rated_movies"
+            app:layout_constraintTop_toBottomOf="@id/text_top_rated_movies"
             tools:listitem="@layout/normal_list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
