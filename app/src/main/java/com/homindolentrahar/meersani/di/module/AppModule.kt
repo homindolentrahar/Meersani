@@ -4,7 +4,10 @@ import android.app.Application
 import androidx.room.Room
 import com.homindolentrahar.meersani.BuildConfig
 import com.homindolentrahar.meersani.api.APIService
+import com.homindolentrahar.meersani.data.LocalCache
 import com.homindolentrahar.meersani.db.LocalDatabase
+import com.homindolentrahar.meersani.db.MoviesCacheDao
+import com.homindolentrahar.meersani.db.SeriesCacheDao
 import com.homindolentrahar.meersani.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -38,5 +41,29 @@ object AppModule {
         )
             .fallbackToDestructiveMigration()
             .build()
+    }
+
+    @Singleton
+    @JvmStatic
+    @Provides
+    fun provideMoviesCacheDao(database: LocalDatabase): MoviesCacheDao {
+        return database.moviesCacheDao()
+    }
+
+    @Singleton
+    @JvmStatic
+    @Provides
+    fun provideSeriesCacheDao(database: LocalDatabase): SeriesCacheDao {
+        return database.seriesCacheDao()
+    }
+
+    @Singleton
+    @JvmStatic
+    @Provides
+    fun provideLocalCache(
+        moviesCacheDao: MoviesCacheDao,
+        seriesCacheDao: SeriesCacheDao
+    ): LocalCache {
+        return LocalCache(moviesCacheDao, seriesCacheDao)
     }
 }

@@ -12,7 +12,7 @@
         <com.github.florent37.shapeofview.shapes.DiagonalView
             android:id="@+id/img_banner_layout"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="180dp"
             app:layout_constraintTop_toTopOf="parent"
             app:shape_diagonal_angle="2"
             app:shape_diagonal_direction="left"

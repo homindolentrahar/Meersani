@@ -11,12 +11,13 @@ import androidx.fragment.app.FragmentManager
 
 import com.homindolentrahar.meersani.R
 import com.homindolentrahar.meersani.adapter.ViewPagerAdapter
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class FavoritesFragment : Fragment() {
+class FavoritesFragment : DaggerFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
