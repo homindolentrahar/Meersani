@@ -5,13 +5,19 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.text.TextUtils
 import android.view.View
+import androidx.paging.PagedList
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.Transformation
 import com.homindolentrahar.meersani.model.GenresResult
+import com.homindolentrahar.meersani.model.ProductionCompanies
+import com.homindolentrahar.meersani.ui.categories.DetailCategoriesActivity
 import com.homindolentrahar.meersani.ui.detail.DetailItemActivity
 import com.homindolentrahar.meersani.ui.search.SearchActivity
 import jp.wasabeef.glide.transformations.BlurTransformation
 import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation
+import java.text.NumberFormat
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 object Constants {
     const val DB_NAME = "localDatabase.db"
@@ -28,9 +34,14 @@ object Constants {
     const val TYPE_SERIES_POPULAR = "series_popular"
     const val TYPE_SERIES_TOP_RATED = "series_top_rated"
 
+    const val TYPE_SEARCH_MOVIES = "search_movies"
+    const val TYPE_SEARCH_SERIES = "search_series"
+
     const val TYPE_PRIMARY_HOLDER = "primary_holder"
     const val TYPE_NORMAL_HOLDER = "normal_holder"
     const val TYPE_PAGED_HOLDER = "paged_holder"
+
+    const val NO_QUERY = "No Query"
 
     fun navigateToDetailItem(context: Context, id: Int, type: String) {
         val intent = Intent(context, DetailItemActivity::class.java)
@@ -45,8 +56,22 @@ object Constants {
         context.startActivity(intent)
     }
 
+    fun navigateToCategories(context: Context, type: String) {
+        val intent = Intent(context, DetailCategoriesActivity::class.java)
+        intent.putExtra(DetailCategoriesActivity.EXTRA_TYPE, type)
+        context.startActivity(intent)
+    }
+
     fun setProgressVisibility(loadingLayout: View, visibility: Int) {
         loadingLayout.visibility = visibility
+    }
+
+    fun getPagedListConfig(pageSize: Int): PagedList.Config {
+        return PagedList.Config.Builder()
+            .setPageSize(pageSize)
+            .setInitialLoadSizeHint(pageSize * 10)
+            .setEnablePlaceholders(true)
+            .build()
     }
 
     fun getBannerOptions(): Transformation<Bitmap> {
@@ -68,7 +93,35 @@ object Constants {
         return TextUtils.join(", ", genres)
     }
 
+    fun getFormattedReleaseDate(date: String): String {
+        val currentDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").parse(date)
+        return DateTimeFormatter.ofPattern("MMM dd, yyyy").format(currentDate)
+    }
+
+    fun getFormattedCurrency(money: Int): String {
+        val currencyFormatter = NumberFormat.getCurrencyInstance()
+        currencyFormatter.maximumFractionDigits = 0
+        currencyFormatter.currency = Currency.getInstance("USD")
+        return currencyFormatter.format(money)
+    }
+
     fun getReleasedYear(releaseDate: String): String {
-        return if (releaseDate != "" && releaseDate.split("-").isNotEmpty()) releaseDate.split("-")[0] else "No Date Release"
+        return releaseDate.split("-")[0]
+    }
+
+    fun getEpisodesRuntime(listRuntime: List<Int>): String {
+        val runtimes = mutableListOf<String>()
+        for (runtime in listRuntime) {
+            runtimes.add(runtime.toString())
+        }
+        return TextUtils.join(", ", runtimes)
+    }
+
+    fun getProductionHouse(list: List<ProductionCompanies>): String {
+        val ph = mutableListOf<String>()
+        for (production in list) {
+            ph.add(production.name)
+        }
+        return TextUtils.join(", ", ph)
     }
 }

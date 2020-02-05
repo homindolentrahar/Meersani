@@ -20,8 +20,6 @@ import dagger.android.support.DaggerFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_movies.btn_search
-import kotlinx.android.synthetic.main.fragment_movies.img_banner
 import kotlinx.android.synthetic.main.fragment_series.*
 import kotlinx.android.synthetic.main.loading_layout.*
 import javax.inject.Inject
@@ -29,7 +27,7 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-class SeriesFragment : DaggerFragment() {
+class SeriesFragment : DaggerFragment(), View.OnClickListener {
 
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
@@ -60,6 +58,8 @@ class SeriesFragment : DaggerFragment() {
         setupRecyclerView()
 //        Observing data
         observingData()
+//        See All button clicked
+        buttonSeeAllClicked()
     }
 
     private fun setupBanner() {
@@ -148,6 +148,34 @@ class SeriesFragment : DaggerFragment() {
                     }
                 )
         )
+    }
+
+    private fun buttonSeeAllClicked() {
+        btn_text_see_all_today_airing.setOnClickListener(this)
+        btn_text_see_all_on_air.setOnClickListener(this)
+        btn_text_see_all_popular_series.setOnClickListener(this)
+        btn_text_see_all_top_rated_series.setOnClickListener(this)
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.btn_text_see_all_today_airing -> Constants.navigateToCategories(
+                context!!,
+                Constants.TYPE_SERIES_TODAY_AIRING
+            )
+            R.id.btn_text_see_all_on_air -> Constants.navigateToCategories(
+                context!!,
+                Constants.TYPE_SERIES_ON_AIR
+            )
+            R.id.btn_text_see_all_popular_series -> Constants.navigateToCategories(
+                context!!,
+                Constants.TYPE_SERIES_POPULAR
+            )
+            R.id.btn_text_see_all_top_rated_series -> Constants.navigateToCategories(
+                context!!,
+                Constants.TYPE_SERIES_TOP_RATED
+            )
+        }
     }
 
     override fun onDestroy() {

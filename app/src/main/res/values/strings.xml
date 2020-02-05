@@ -22,10 +22,14 @@
     <string name="description">Description</string>
     <string name="dummy_text">\t\tGet a list of movies in theatres. This is a release type query that looks for all movies that have a release type of 2 or 3 within the specified date range.You can optionally specify a region prameter which will narrow the search to only look for theatrical release dates within the specified country.</string>
     <string name="detail_text_format">\t\t%s</string>
+    <string name="runtime_format">%s min</string>
     <string name="read_more">Read More</string>
     <string name="budget">Budget</string>
     <string name="revenue">Revenue</string>
     <string name="overview">Overview</string>
     <string name="production">Production</string>
     <string name="recommendations">Recommendations</string>
+    <string name="episodes">Episodes</string>
+    <string name="seasons">Seasons</string>
+    <string name="hide">Hide</string>
 </resources>

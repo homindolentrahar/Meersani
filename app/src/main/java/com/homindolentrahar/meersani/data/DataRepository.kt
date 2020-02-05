@@ -1,13 +1,19 @@
 package com.homindolentrahar.meersani.data
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.homindolentrahar.meersani.BuildConfig
 import com.homindolentrahar.meersani.api.APIService
+import com.homindolentrahar.meersani.data.paging.MoviesDataSourceFactory
+import com.homindolentrahar.meersani.data.paging.SeriesDataSourceFactory
 import com.homindolentrahar.meersani.model.*
 import com.homindolentrahar.meersani.util.Constants
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.functions.Function3
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -18,6 +24,73 @@ class DataRepository @Inject constructor(
 
     private val TAG = DataRepository::class.java.simpleName
     private val disposable = CompositeDisposable()
+    private val pageSize = 10
+
+//    Detail
+
+    fun getDetailMovies(id: Int): Flowable<DetailMovies> {
+        return Flowable.zip(
+            apiService.getMoviesDetail(id, BuildConfig.API_KEY).subscribeOn(Schedulers.io()),
+            apiService.getMoviesCast(id, BuildConfig.API_KEY).subscribeOn(Schedulers.io()),
+            apiService.getMoviesRecommendations(
+                id,
+                BuildConfig.API_KEY
+            ).subscribeOn(Schedulers.io()),
+            Function3 { moviesDetail, cast, moviesRecommendations ->
+                DetailMovies(moviesDetail, cast, moviesRecommendations.results)
+            }
+        )
+    }
+
+    fun getDetailSeries(id: Int): Flowable<DetailSeries> {
+        return Flowable.zip(
+            apiService.getSeriesDetail(id, BuildConfig.API_KEY).subscribeOn(Schedulers.io()),
+            apiService.getSeriesCast(id, BuildConfig.API_KEY).subscribeOn(Schedulers.io()),
+            apiService.getSeriesRecommendations(
+                id,
+                BuildConfig.API_KEY
+            ).subscribeOn(Schedulers.io()),
+            Function3 { seriesDetail, cast, seriesRecommendations ->
+                DetailSeries(seriesDetail, cast, seriesRecommendations.results)
+            }
+        )
+    }
+
+//    Paging
+
+    fun getPagedMovies(type: String): LiveData<PagedList<MoviesResult>> {
+        val dataSourceFactory = MoviesDataSourceFactory(apiService, type, Constants.NO_QUERY)
+        return LivePagedListBuilder(
+            dataSourceFactory,
+            Constants.getPagedListConfig(pageSize)
+        ).build()
+    }
+
+    fun getPagedSeries(type: String): LiveData<PagedList<SeriesResult>> {
+        val dataSourceFactory = SeriesDataSourceFactory(apiService, type, Constants.NO_QUERY)
+        return LivePagedListBuilder(
+            dataSourceFactory,
+            Constants.getPagedListConfig(pageSize)
+        ).build()
+    }
+
+    fun searchMovies(query: String): LiveData<PagedList<MoviesResult>> {
+        val dataSourceFactory =
+            MoviesDataSourceFactory(apiService, Constants.TYPE_SEARCH_MOVIES, query)
+        return LivePagedListBuilder(
+            dataSourceFactory,
+            Constants.getPagedListConfig(pageSize)
+        ).build()
+    }
+
+    fun searchSeries(query: String): LiveData<PagedList<SeriesResult>> {
+        val dataSourceFactory =
+            SeriesDataSourceFactory(apiService, Constants.TYPE_SEARCH_SERIES, query)
+        return LivePagedListBuilder(
+            dataSourceFactory,
+            Constants.getPagedListConfig(pageSize)
+        ).build()
+    }
 
 //    Caching
 

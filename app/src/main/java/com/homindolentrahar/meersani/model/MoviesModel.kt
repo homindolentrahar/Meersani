@@ -22,7 +22,7 @@ data class MoviesResult(
     @SerializedName("genre_ids")
     val genreIds: List<Int>?,
     @SerializedName("release_date")
-    val releaseDate: String,
+    val releaseDate: String = "No Date",
     @SerializedName("vote_average")
     val rating: Double,
     @SerializedName("poster_path")

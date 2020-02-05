@@ -28,7 +28,7 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-class MoviesFragment : DaggerFragment() {
+class MoviesFragment : DaggerFragment(), View.OnClickListener {
 
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
@@ -59,6 +59,8 @@ class MoviesFragment : DaggerFragment() {
         setupRecyclerView()
 //        Observing data
         observingData()
+//        See All button clicked
+        buttonSeeAllClicked()
     }
 
     private fun setupBanner() {
@@ -147,6 +149,34 @@ class MoviesFragment : DaggerFragment() {
                     }
                 )
         )
+    }
+
+    private fun buttonSeeAllClicked() {
+        btn_text_see_all_now_playing.setOnClickListener(this)
+        btn_text_see_all_upcoming.setOnClickListener(this)
+        btn_text_see_all_popular_movies.setOnClickListener(this)
+        btn_text_see_all_top_rated_movies.setOnClickListener(this)
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.btn_text_see_all_now_playing -> Constants.navigateToCategories(
+                context!!,
+                Constants.TYPE_MOVIES_NOW_PLAYING
+            )
+            R.id.btn_text_see_all_upcoming -> Constants.navigateToCategories(
+                context!!,
+                Constants.TYPE_MOVIES_UPCOMING
+            )
+            R.id.btn_text_see_all_popular_movies -> Constants.navigateToCategories(
+                context!!,
+                Constants.TYPE_MOVIES_POPULAR
+            )
+            R.id.btn_text_see_all_top_rated_movies -> Constants.navigateToCategories(
+                context!!,
+                Constants.TYPE_MOVIES_TOP_RATED
+            )
+        }
     }
 
     override fun onDestroy() {

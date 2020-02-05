@@ -34,7 +34,7 @@ interface APIService {
 
     @GET("movie/{movie_id}/recommendations")
     fun getMoviesRecommendations(
-        @Path("movie_id")
+        @Path("movie_id") id: Int,
         @Query("api_key") key: String
     ): Flowable<MoviesResponse>
 
@@ -47,13 +47,13 @@ interface APIService {
 
     @GET("movie/{movie_id}")
     fun getMoviesDetail(
-        @Path("movie_id")
+        @Path("movie_id") id: Int,
         @Query("api_key") key: String
     ): Flowable<MoviesDetail>
 
     @GET("movie/{movie_id}/credits")
     fun getMoviesCast(
-        @Path("movie_id")
+        @Path("movie_id") id: Int,
         @Query("api_key") key: String
     ): Flowable<CastResponse>
 

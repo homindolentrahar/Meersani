@@ -26,4 +26,15 @@
         app:layout_constraintTop_toBottomOf="@id/search_bar"
         tools:listitem="@layout/vertical_list_item" />
 
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progress_bar"
+        style="@style/ProgressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/rv_list_search"
+        app:layout_constraintEnd_toEndOf="@id/rv_list_search"
+        app:layout_constraintStart_toStartOf="@id/rv_list_search"
+        app:layout_constraintTop_toTopOf="@id/rv_list_search" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

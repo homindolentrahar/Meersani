@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.homindolentrahar.meersani.BuildConfig
 import com.homindolentrahar.meersani.databinding.NormalListItemBinding
 import com.homindolentrahar.meersani.databinding.PrimaryListItemBinding
-import com.homindolentrahar.meersani.databinding.VerticalListItemBinding
 import com.homindolentrahar.meersani.model.SeriesResult
 import com.homindolentrahar.meersani.util.Constants
 
@@ -30,11 +29,6 @@ class SeriesItemAdapter(
                     LayoutInflater.from(parent.context), parent, false
                 )
             )
-            Constants.TYPE_PAGED_HOLDER -> PagedHolder(
-                VerticalListItemBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false
-                )
-            )
             else -> null
         }!!
     }
@@ -44,7 +38,6 @@ class SeriesItemAdapter(
         when (type) {
             Constants.TYPE_PRIMARY_HOLDER -> (holder as PrimaryHolder).bind(item)
             Constants.TYPE_NORMAL_HOLDER -> (holder as NormalHolder).bind(item)
-            Constants.TYPE_PAGED_HOLDER -> (holder as PagedHolder).bind(item)
         }
         holder.itemView.setOnClickListener { onClick(item) }
     }
@@ -69,19 +62,6 @@ class SeriesItemAdapter(
                 .into(binding.imgPoster)
             binding.tvTitle.text = item.name
             binding.tvGenre.text = item.genres
-            binding.tvRating.text = item.rating.toString()
-        }
-    }
-
-    class PagedHolder(val binding: VerticalListItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: SeriesResult) {
-            Glide.with(itemView.context)
-                .load(BuildConfig.IMAGE_BASE_URL + item.posterPath)
-                .into(binding.imgPoster)
-            binding.tvTitle.text = item.name
-            binding.tvGenre.text = item.genres
-            binding.tvRelease.text = Constants.getReleasedYear(item.firstAirDate)
             binding.tvRating.text = item.rating.toString()
         }
     }
