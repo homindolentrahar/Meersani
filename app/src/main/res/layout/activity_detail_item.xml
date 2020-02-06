@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/all_wrapper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark">
@@ -43,6 +44,17 @@
                 android:src="@drawable/ic_back"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btn_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin"
+                android:contentDescription="@string/favorites"
+                android:src="@drawable/ic_heart"
+                app:layout_constraintBottom_toBottomOf="@id/btn_settings"
+                app:layout_constraintEnd_toStartOf="@id/btn_settings"
+                app:layout_constraintTop_toTopOf="@id/btn_settings" />
 
             <ImageView
                 android:id="@+id/btn_settings"

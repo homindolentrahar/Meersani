@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.chip.Chip
+import com.google.android.material.snackbar.Snackbar
 import com.homindolentrahar.meersani.BuildConfig
 import com.homindolentrahar.meersani.R
 import com.homindolentrahar.meersani.adapter.recyclerview.CastItemAdapter
@@ -42,6 +43,7 @@ class DetailItemActivity : DaggerAppCompatActivity() {
     private val TAG = DetailItemActivity::class.java.simpleName
     private val disposable = CompositeDisposable()
     private var expanded = false
+    private var isLoved = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,12 +54,32 @@ class DetailItemActivity : DaggerAppCompatActivity() {
 //        ViewModel setup
         viewModel =
             ViewModelProviders.of(this, providerFactory).get(DetailItemViewModel::class.java)
+//        Check existed item on favorties
+        checkExistedItemOnFavorites(id)
 //        Banner setup
         setupBanner()
 //        RecyclerView setup
         setupRecyclerView(type)
 //        Setup item
         setItem(id, type)
+    }
+
+    private fun checkExistedItemOnFavorites(id: Int) {
+        disposable.add(
+            viewModel.checkExistedItem(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                    { list ->
+                        isLoved = list.isNotEmpty()
+                        loveState(isLoved)
+                        Log.d(TAG, "Is Favorites : ${list.isNotEmpty()}")
+                    },
+                    { error ->
+                        Log.d(TAG, "Error checking : ${error.message}")
+                    }
+                )
+        )
     }
 
     private fun setupBanner() {
@@ -67,9 +89,11 @@ class DetailItemActivity : DaggerAppCompatActivity() {
     private fun setupRecyclerView(type: String) {
         moviesAdapter = MoviesItemAdapter(Constants.TYPE_NORMAL_HOLDER) { item ->
             Constants.navigateToDetailItem(this, item.id, type)
+            finish()
         }
         seriesAdapter = SeriesItemAdapter(Constants.TYPE_NORMAL_HOLDER) { item ->
             Constants.navigateToDetailItem(this, item.id, type)
+            finish()
         }
         castAdapter = CastItemAdapter()
         rv_list_recommendations.adapter =
@@ -92,7 +116,7 @@ class DetailItemActivity : DaggerAppCompatActivity() {
                             Handler().postDelayed({
                                 Constants.setProgressVisibility(loading_layout, View.GONE)
                             }, 800)
-                            Log.d(TAG, "Success mungkin ?")
+                            Log.d(TAG, "Getting detail Movies")
                         },
                         { error ->
                             Log.d(TAG, "Error setup detail : ${error.message}")
@@ -113,7 +137,7 @@ class DetailItemActivity : DaggerAppCompatActivity() {
                             Handler().postDelayed({
                                 Constants.setProgressVisibility(loading_layout, View.GONE)
                             }, 800)
-                            Log.d(TAG, "Success mungkin ?")
+                            Log.d(TAG, "Getting detail Series")
                         },
                         { error ->
                             Log.d(TAG, "Error setup detail : ${error.message}")
@@ -125,6 +149,7 @@ class DetailItemActivity : DaggerAppCompatActivity() {
 
     private fun setMoviesItem(item: MoviesDetail, type: String) {
         populateToView(
+            item.id,
             item.title,
             Constants.getFormattedReleaseDate(item.releaseDate),
             item.genres,
@@ -142,6 +167,7 @@ class DetailItemActivity : DaggerAppCompatActivity() {
 
     private fun setSeriesItem(item: SeriesDetail, type: String) {
         populateToView(
+            item.id,
             item.name,
             Constants.getFormattedReleaseDate(item.firstAirDate),
             item.genres,
@@ -170,6 +196,7 @@ class DetailItemActivity : DaggerAppCompatActivity() {
     }
 
     private fun populateToView(
+        id: Int,
         title: String,
         release: String,
         listGenre: List<GenresResult>,
@@ -208,6 +235,21 @@ class DetailItemActivity : DaggerAppCompatActivity() {
             chip_genre_group.addView(chip)
         }
         tvReadMoreListener()
+//        Setup Favorites Operations
+        val favType = if (type.contains(
+                "Movies",
+                true
+            )
+        ) Constants.FAVORITES_MOVIES else Constants.FAVORITES_SERIES
+        setupFavoritesOperations(
+            id,
+            title,
+            release,
+            Constants.getStringGenres(listGenre),
+            rating.toDouble(),
+            posterPath,
+            favType
+        )
     }
 
     private fun tvReadMoreListener() {
@@ -227,5 +269,54 @@ class DetailItemActivity : DaggerAppCompatActivity() {
                 btn_text_read_more.text = getString(R.string.read_more)
             }
         }
+    }
+
+    private fun setupFavoritesOperations(
+        id: Int,
+        title: String,
+        release: String,
+        genres: String,
+        rating: Double,
+        posterPath: String,
+        type: String
+    ) {
+        btn_favorite.setOnClickListener {
+
+            if (isLoved) {
+                disposable.add(
+                    viewModel.delete(id)
+                        .subscribeOn(Schedulers.io())
+                        .subscribe {
+                            showSnackbar("Removed from your Favorites")
+                        }
+                )
+            } else {
+                val favorites = Favorites(id, title, release, genres, rating, posterPath, type)
+                disposable.add(
+                    viewModel.insert(favorites)
+                        .subscribeOn(Schedulers.io())
+                        .subscribe {
+                            showSnackbar("Added to your Favorites")
+                        }
+                )
+            }
+
+            isLoved = !isLoved
+            loveState(isLoved)
+        }
+    }
+
+    private fun loveState(isLoved: Boolean) {
+        if (isLoved) btn_favorite.setImageResource(R.drawable.ic_heart_filled)
+        else btn_favorite.setImageResource(R.drawable.ic_heart)
+    }
+
+    private fun showSnackbar(msg: String) {
+        Snackbar.make(all_wrapper, msg, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
     }
 }

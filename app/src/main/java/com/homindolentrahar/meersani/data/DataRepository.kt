@@ -8,8 +8,10 @@ import com.homindolentrahar.meersani.BuildConfig
 import com.homindolentrahar.meersani.api.APIService
 import com.homindolentrahar.meersani.data.paging.MoviesDataSourceFactory
 import com.homindolentrahar.meersani.data.paging.SeriesDataSourceFactory
+import com.homindolentrahar.meersani.db.FavoritesDao
 import com.homindolentrahar.meersani.model.*
 import com.homindolentrahar.meersani.util.Constants
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -19,12 +21,31 @@ import javax.inject.Inject
 
 class DataRepository @Inject constructor(
     private val apiService: APIService,
-    private val localCache: LocalCache
+    private val localCache: LocalCache,
+    private val favoritesDao: FavoritesDao
 ) {
 
     private val TAG = DataRepository::class.java.simpleName
     private val disposable = CompositeDisposable()
     private val pageSize = 10
+
+//    Favorites database Operations
+
+    fun checkExistedItem(itemId: Int): Flowable<List<Favorites>> {
+        return favoritesDao.checkExistedItem(itemId)
+    }
+
+    fun getFavoritesByType(type: String): Flowable<List<Favorites>> {
+        return favoritesDao.getFavoritesByType(type)
+    }
+
+    fun insert(item: Favorites):Completable {
+        return favoritesDao.insert(item)
+    }
+
+    fun delete(itemId: Int):Completable {
+        return favoritesDao.delete(itemId)
+    }
 
 //    Detail
 

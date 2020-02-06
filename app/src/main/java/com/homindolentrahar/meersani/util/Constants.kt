@@ -23,6 +23,9 @@ object Constants {
     const val DB_NAME = "localDatabase.db"
     const val CACHE_MOVIES_TABLE = "cache_movies_table"
     const val CACHE_SERIES_TABLE = "cache_series_table"
+    const val FAVORITES_TABLE = "favorites_table"
+    const val FAVORITES_MOVIES = "favorites_movies"
+    const val FAVORITES_SERIES = "favorites_series"
 
     const val TYPE_MOVIES_NOW_PLAYING = "movies_now_playing"
     const val TYPE_MOVIES_UPCOMING = "movies_upcoming"
@@ -89,6 +92,14 @@ object Constants {
                     genres.add(genre.name)
                 }
             }
+        }
+        return TextUtils.join(", ", genres)
+    }
+
+    fun getStringGenres(listGenres: List<GenresResult>): String {
+        val genres = mutableListOf<String>()
+        for (genre in listGenres) {
+            genres.add(genre.name)
         }
         return TextUtils.join(", ", genres)
     }

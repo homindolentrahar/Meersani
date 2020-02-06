@@ -4,7 +4,9 @@ import android.app.Application
 import androidx.room.Room
 import com.homindolentrahar.meersani.BuildConfig
 import com.homindolentrahar.meersani.api.APIService
+import com.homindolentrahar.meersani.data.DataRepository
 import com.homindolentrahar.meersani.data.LocalCache
+import com.homindolentrahar.meersani.db.FavoritesDao
 import com.homindolentrahar.meersani.db.LocalDatabase
 import com.homindolentrahar.meersani.db.MoviesCacheDao
 import com.homindolentrahar.meersani.db.SeriesCacheDao
@@ -60,10 +62,28 @@ object AppModule {
     @Singleton
     @JvmStatic
     @Provides
+    fun provideFavoritesDao(database: LocalDatabase): FavoritesDao {
+        return database.favoritesDao()
+    }
+
+    @Singleton
+    @JvmStatic
+    @Provides
     fun provideLocalCache(
         moviesCacheDao: MoviesCacheDao,
         seriesCacheDao: SeriesCacheDao
     ): LocalCache {
         return LocalCache(moviesCacheDao, seriesCacheDao)
+    }
+
+    @Singleton
+    @JvmStatic
+    @Provides
+    fun provideDataRepository(
+        apiService: APIService,
+        localCache: LocalCache,
+        favoritesDao: FavoritesDao
+    ): DataRepository {
+        return DataRepository(apiService, localCache, favoritesDao)
     }
 }
