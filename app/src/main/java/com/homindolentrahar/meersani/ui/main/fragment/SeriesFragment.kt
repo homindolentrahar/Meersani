@@ -71,6 +71,7 @@ class SeriesFragment : DaggerFragment(), View.OnClickListener {
                 getString(R.string.series)
             )
         }
+        btn_settings.setOnClickListener { Constants.navigateToSettings(context!!) }
     }
 
     private fun setupRecyclerView() {

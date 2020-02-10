@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Meersani</string>
+    <string name="movies">Film</string>
+    <string name="series">Serial TV</string>
+    <string name="favorites">Favorit</string>
+
+    <string name="movies_banner">Banner Film</string>
+    <string name="settings">Pengaturan</string>
+    <string name="search">Cari</string>
+    <string name="now_playing">Sedang Tayang</string>
+    <string name="see_all">Lihat Semua</string>
+    <string name="upcoming">Akan Tayang</string>
+    <string name="on_air">Sedang Tayang</string>
+    <string name="popular">Populer</string>
+    <string name="top_rated">Rating Tertinggi</string>
+    <string name="today_airing">Tayang Hari Ini</string>
+    <string name="detail_item_banner">Detail Banner Item</string>
+    <string name="rating">Rating</string>
+    <string name="runtime">Durasi</string>
+    <string name="cast">Pemeran</string>
+    <string name="back">Kembali</string>
+    <string name="dummy_text">\t\tGet a list of movies in theatres. This is a release type query that looks for all movies that have a release type of 2 or 3 within the specified date range.You can optionally specify a region prameter which will narrow the search to only look for theatrical release dates within the specified country.</string>
+    <string name="detail_text_format">\t\t%s</string>
+    <string name="runtime_format">%s min</string>
+    <string name="read_more">Baca Lagi</string>
+    <string name="budget">Biaya</string>
+    <string name="revenue">Keuntungan</string>
+    <string name="overview">Ikhtisar</string>
+    <string name="production">Produksi</string>
+    <string name="recommendations">Rekomendasi</string>
+    <string name="episodes">Jumlah Episode</string>
+    <string name="seasons">Jumlah Musim</string>
+    <string name="hide">Sembunyikan</string>
+    <string name="daily_reminder">Pengingat Harian</string>
+    <string name="today_release">Rilis Hari Ini</string>
+    <string name="change_language">Ganti Bahasa</string>
+    <string name="daily_reminder_summary">Ingatkan setiap jam 7 pagi</string>
+    <string name="today_release_reminder">Info tentang Film rilis hari ini setiap jam 8 pagi</string>
+    <string name="change_lang_summary">Ganti Bahasa Aplikasi</string>
+    <string name="app_desc">Aplikasi katalog Film dan Serial TV</string>
+
+    <string-array name="language_name">
+        <item>English</item>
+        <item>Indonesian</item>
+    </string-array>
+
+    <string-array name="language_name_value">
+        <item>en</item>
+        <item>id</item>
+    </string-array>
+</resources>

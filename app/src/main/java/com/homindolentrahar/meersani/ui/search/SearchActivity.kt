@@ -1,18 +1,17 @@
 package com.homindolentrahar.meersani.ui.search
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.homindolentrahar.meersani.BaseActivity
 import com.homindolentrahar.meersani.R
 import com.homindolentrahar.meersani.adapter.recyclerview.PagedMoviesItemAdapter
 import com.homindolentrahar.meersani.adapter.recyclerview.PagedSeriesItemAdapter
 import com.homindolentrahar.meersani.util.Constants
 import com.homindolentrahar.meersani.util.ViewModelProviderFactory
-import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -21,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_search.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class SearchActivity : DaggerAppCompatActivity() {
+class SearchActivity : BaseActivity() {
 
     companion object {
         const val EXTRA_TYPE = "extra_type"

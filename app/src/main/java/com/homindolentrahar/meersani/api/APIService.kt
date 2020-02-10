@@ -116,4 +116,12 @@ interface APIService {
     fun getSeriesGenres(
         @Query("api_key") key: String
     ): Flowable<GenresResponse>
+
+    //    Today Released Movies
+    @GET("discover/movie")
+    fun getTodayReleasedMovies(
+        @Query("api_key") key: String,
+        @Query("primary_release_date.gte") dateGte: String,
+        @Query("primary_release_date.lte") dateLte: String
+    ): Flowable<MoviesResponse>
 }

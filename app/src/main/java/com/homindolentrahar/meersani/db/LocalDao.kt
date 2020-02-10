@@ -17,6 +17,9 @@ interface MoviesCacheDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(list: List<MoviesResult>)
+
+    @Query("DELETE FROM cache_movies_table")
+    fun deleteAll()
 }
 
 @Dao
@@ -26,6 +29,9 @@ interface SeriesCacheDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(list: List<SeriesResult>)
+
+    @Query("DELETE FROM cache_series_table")
+    fun deleteAll()
 }
 
 @Dao

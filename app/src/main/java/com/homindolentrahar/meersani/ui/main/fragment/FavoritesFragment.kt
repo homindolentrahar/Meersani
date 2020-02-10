@@ -41,6 +41,7 @@ class FavoritesFragment : DaggerFragment() {
     private fun setupBanner() {
         Glide.with(context!!).load(R.drawable.projector)
             .apply(RequestOptions.bitmapTransform(Constants.getBannerOptions())).into(img_banner)
+        btn_settings.setOnClickListener { Constants.navigateToSettings(context!!) }
     }
 
     private fun viewPagerSetup() {

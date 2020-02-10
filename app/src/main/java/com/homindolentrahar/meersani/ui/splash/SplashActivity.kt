@@ -15,6 +15,7 @@ class SplashActivity : AppCompatActivity() {
 //        Loading to main page
         Handler().postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }, 1000)
     }
 }

@@ -2,19 +2,26 @@ package com.homindolentrahar.meersani.util
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.text.TextUtils
 import android.view.View
 import androidx.paging.PagedList
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.Transformation
+import com.homindolentrahar.meersani.BuildConfig
+import com.homindolentrahar.meersani.api.APIService
 import com.homindolentrahar.meersani.model.GenresResult
 import com.homindolentrahar.meersani.model.ProductionCompanies
 import com.homindolentrahar.meersani.ui.categories.DetailCategoriesActivity
 import com.homindolentrahar.meersani.ui.detail.DetailItemActivity
 import com.homindolentrahar.meersani.ui.search.SearchActivity
+import com.homindolentrahar.meersani.ui.settings.SettingsActivity
 import jp.wasabeef.glide.transformations.BlurTransformation
 import jp.wasabeef.glide.transformations.gpu.VignetteFilterTransformation
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.text.NumberFormat
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -42,9 +49,14 @@ object Constants {
 
     const val TYPE_PRIMARY_HOLDER = "primary_holder"
     const val TYPE_NORMAL_HOLDER = "normal_holder"
-    const val TYPE_PAGED_HOLDER = "paged_holder"
 
     const val NO_QUERY = "No Query"
+
+    const val LANG_PREF = "lang_pref"
+
+    fun getDefaultSharedPreference(context: Context): SharedPreferences {
+        return context.getSharedPreferences(LANG_PREF, Context.MODE_PRIVATE)
+    }
 
     fun navigateToDetailItem(context: Context, id: Int, type: String) {
         val intent = Intent(context, DetailItemActivity::class.java)
@@ -65,8 +77,22 @@ object Constants {
         context.startActivity(intent)
     }
 
+    fun navigateToSettings(context: Context) {
+        val intent = Intent(context, SettingsActivity::class.java)
+        context.startActivity(intent)
+    }
+
     fun setProgressVisibility(loadingLayout: View, visibility: Int) {
         loadingLayout.visibility = visibility
+    }
+
+    fun getAPIService(): APIService {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(APIService::class.java)
     }
 
     fun getPagedListConfig(pageSize: Int): PagedList.Config {

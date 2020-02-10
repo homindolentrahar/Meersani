@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 
 import com.homindolentrahar.meersani.R
 import com.homindolentrahar.meersani.adapter.recyclerview.FavoritesItemAdapter
-import com.homindolentrahar.meersani.ui.main.fragment.favorites.viewmodel.FavoritesMoviesViewModel
 import com.homindolentrahar.meersani.ui.main.fragment.favorites.viewmodel.FavoritesSeriesViewModel
 import com.homindolentrahar.meersani.util.Constants
 import com.homindolentrahar.meersani.util.ViewModelProviderFactory

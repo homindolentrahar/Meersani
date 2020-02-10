@@ -4,6 +4,7 @@ import com.homindolentrahar.meersani.ui.categories.DetailCategoriesActivity
 import com.homindolentrahar.meersani.ui.detail.DetailItemActivity
 import com.homindolentrahar.meersani.ui.main.MainActivity
 import com.homindolentrahar.meersani.ui.search.SearchActivity
+import com.homindolentrahar.meersani.ui.settings.SettingsActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -20,4 +21,7 @@ abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeSearchActivity(): SearchActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeSettingsActivity(): SettingsActivity
 }

@@ -72,6 +72,9 @@ class MoviesFragment : DaggerFragment(), View.OnClickListener {
                 getString(R.string.movies)
             )
         }
+        btn_settings.setOnClickListener {
+            Constants.navigateToSettings(context!!)
+        }
     }
 
     private fun setupRecyclerView() {

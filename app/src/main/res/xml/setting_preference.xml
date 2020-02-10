@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:icon="@drawable/ic_alarm"
+        android:key="@string/daily_reminder"
+        android:summary="@string/daily_reminder_summary"
+        android:title="@string/daily_reminder" />
+    <SwitchPreference
+        android:icon="@drawable/ic_ticket"
+        android:key="@string/today_release"
+        android:summary="@string/today_release_reminder"
+        android:title="@string/today_release" />
+    <ListPreference
+        android:entries="@array/language_name"
+        android:entryValues="@array/language_name_value"
+        android:icon="@drawable/ic_library"
+        android:key="@string/change_language"
+        android:summary="@string/change_lang_summary"
+        android:title="@string/change_language" />
+</PreferenceScreen>

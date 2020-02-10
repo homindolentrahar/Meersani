@@ -5,16 +5,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.homindolentrahar.meersani.BaseActivity
 import com.homindolentrahar.meersani.R
 import com.homindolentrahar.meersani.adapter.recyclerview.PagedMoviesItemAdapter
 import com.homindolentrahar.meersani.adapter.recyclerview.PagedSeriesItemAdapter
 import com.homindolentrahar.meersani.util.Constants
 import com.homindolentrahar.meersani.util.ViewModelProviderFactory
-import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_detail_categories.*
 import javax.inject.Inject
 
-class DetailCategoriesActivity : DaggerAppCompatActivity() {
+class DetailCategoriesActivity : BaseActivity() {
 
     companion object {
         const val EXTRA_TYPE = "extra_type"
@@ -57,10 +57,12 @@ class DetailCategoriesActivity : DaggerAppCompatActivity() {
             else -> "No Title"
         }
         val bannerImage = if (type.contains("Movies", true)) R.drawable.film else R.drawable.tv
-        Glide.with(this).load(bannerImage).apply(RequestOptions.bitmapTransform(Constants.getBannerOptions())).into(img_banner)
+        Glide.with(this).load(bannerImage)
+            .apply(RequestOptions.bitmapTransform(Constants.getBannerOptions())).into(img_banner)
         text_banner_title.text = bannerTitle
         btn_back.setOnClickListener { finish() }
         btn_search.setOnClickListener { Constants.navigateToSearch(this, type) }
+        btn_settings.setOnClickListener { Constants.navigateToSettings(this) }
     }
 
     private fun setupRecyclerView(type: String) {

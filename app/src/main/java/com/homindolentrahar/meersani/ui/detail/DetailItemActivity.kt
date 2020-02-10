@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
+import com.homindolentrahar.meersani.BaseActivity
 import com.homindolentrahar.meersani.BuildConfig
 import com.homindolentrahar.meersani.R
 import com.homindolentrahar.meersani.adapter.recyclerview.CastItemAdapter
@@ -18,7 +19,6 @@ import com.homindolentrahar.meersani.adapter.recyclerview.SeriesItemAdapter
 import com.homindolentrahar.meersani.model.*
 import com.homindolentrahar.meersani.util.Constants
 import com.homindolentrahar.meersani.util.ViewModelProviderFactory
-import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.activity_detail_item.*
 import kotlinx.android.synthetic.main.loading_layout.*
 import javax.inject.Inject
 
-class DetailItemActivity : DaggerAppCompatActivity() {
+class DetailItemActivity : BaseActivity() {
 
     companion object {
         const val EXTRA_ID = "extra_id"
@@ -84,6 +84,7 @@ class DetailItemActivity : DaggerAppCompatActivity() {
 
     private fun setupBanner() {
         btn_back.setOnClickListener { finish() }
+        btn_settings.setOnClickListener { Constants.navigateToSettings(this) }
     }
 
     private fun setupRecyclerView(type: String) {

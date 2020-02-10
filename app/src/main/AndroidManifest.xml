@@ -3,6 +3,8 @@
     package="com.homindolentrahar.meersani">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name=".BaseApplication"
@@ -12,6 +14,17 @@
         android:roundIcon="@mipmap/ic_meersani_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <receiver
+            android:name=".service.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true"/>
+
+        <activity android:name=".BaseActivity" />
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:configChanges="orientation|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/SettingPrefStyle" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,18 +32,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.detail.DetailItemActivity" />
+        <activity
+            android:name=".ui.detail.DetailItemActivity"
+            android:configChanges="orientation|locale"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.categories.DetailCategoriesActivity"
-            android:configChanges="orientation"
+            android:configChanges="orientation|locale"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.search.SearchActivity"
-            android:configChanges="orientation"
+            android:configChanges="orientation|locale"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.main.MainActivity"
-            android:configChanges="orientation"
+            android:configChanges="orientation|locale"
             android:screenOrientation="portrait" />
 
         <meta-data
