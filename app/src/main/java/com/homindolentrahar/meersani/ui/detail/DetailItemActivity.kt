@@ -232,7 +232,9 @@ class DetailItemActivity : BaseActivity() {
         Glide.with(this).load(posterPath).into(img_poster)
         for (genre in listGenre) {
             val chip = layoutInflater.inflate(R.layout.chip_single_item, null, false) as Chip
+            chip.id = genre.id
             chip.text = genre.name
+            chip.setOnClickListener { Constants.navigateToGenres(this, genre.id, genre.name, type) }
             chip_genre_group.addView(chip)
         }
         tvReadMoreListener()
@@ -254,20 +256,15 @@ class DetailItemActivity : BaseActivity() {
     }
 
     private fun tvReadMoreListener() {
-        if (tv_overview.lineCount >= 3) {
-            btn_text_read_more.visibility = View.VISIBLE
-        }
-        btn_text_read_more.setOnClickListener {
+        tv_overview.setOnClickListener {
             if (!expanded) {
                 expanded = true
                 val animator = ObjectAnimator.ofInt(tv_overview, "maxLines", 24)
                 animator.setDuration(100).start()
-                btn_text_read_more.text = getString(R.string.hide)
             } else {
                 expanded = false
                 val animator = ObjectAnimator.ofInt(tv_overview, "maxLines", 3)
                 animator.setDuration(100).start()
-                btn_text_read_more.text = getString(R.string.read_more)
             }
         }
     }

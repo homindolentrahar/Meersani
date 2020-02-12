@@ -90,7 +90,7 @@
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/img_poster"
                 style="@style/ImagePoster"
-                android:layout_width="125dp"
+                android:layout_width="115dp"
                 android:layout_height="160dp"
                 app:layout_constraintBottom_toBottomOf="@id/img_backdrop_layout"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +111,7 @@
 
             <TextView
                 android:id="@+id/tv_rating"
-                style="@style/DetailTitle"
+                style="@style/DetailTitleInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/quarter_margin"
@@ -134,7 +134,7 @@
 
             <TextView
                 android:id="@+id/tv_budget_or_episodes"
-                style="@style/DetailTitle"
+                style="@style/DetailTitleInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/quarter_margin"
@@ -156,7 +156,7 @@
 
             <TextView
                 android:id="@+id/tv_runtime"
-                style="@style/DetailTitle"
+                style="@style/DetailTitleInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -177,7 +177,7 @@
 
             <TextView
                 android:id="@+id/tv_revenue_seasons"
-                style="@style/DetailTitle"
+                style="@style/DetailTitleInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -247,25 +247,14 @@
                 tools:text="@string/dummy_text" />
 
             <TextView
-                android:id="@+id/btn_text_read_more"
-                style="@style/ButtonTextReadMore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/quarter_margin"
-                android:text="@string/read_more"
-                android:visibility="invisible"
-                app:layout_constraintStart_toStartOf="@id/tv_overview"
-                app:layout_constraintTop_toBottomOf="@id/tv_overview" />
-
-            <TextView
                 android:id="@+id/text_production"
                 style="@style/DetailTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin"
                 android:text="@string/production"
-                app:layout_constraintStart_toStartOf="@id/btn_text_read_more"
-                app:layout_constraintTop_toBottomOf="@id/btn_text_read_more" />
+                app:layout_constraintStart_toStartOf="@id/tv_overview"
+                app:layout_constraintTop_toBottomOf="@id/tv_overview" />
 
             <TextView
                 android:id="@+id/tv_production"

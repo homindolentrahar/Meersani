@@ -14,7 +14,8 @@ import io.reactivex.schedulers.Schedulers
 class MoviesDataSource(
     private val apiService: APIService,
     private val type: String,
-    private val query: String
+    private val query: String,
+    private val genresId: Int
 ) :
     PageKeyedDataSource<Int, MoviesResult>() {
 
@@ -99,6 +100,11 @@ class MoviesDataSource(
                 BuildConfig.API_KEY,
                 query,
                 page
+            )
+            Constants.TYPE_MOVIES_BY_GENRE -> apiService.getMoviesByGenres(
+                BuildConfig.API_KEY,
+                page,
+                genresId
             )
             else -> null
         }

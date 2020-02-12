@@ -4,14 +4,15 @@
     <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/half_margin"
         android:layout_marginTop="@dimen/half_margin"
         android:layout_marginEnd="@dimen/half_margin"
+        android:elevation="0dp"
         app:cardBackgroundColor="@color/transparent"
         app:cardCornerRadius="@dimen/radius"
-        app:cardElevation="@dimen/elevation">
+        app:cardElevation="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -19,8 +20,8 @@
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/img_poster"
-                android:layout_width="100dp"
-                android:layout_height="135dp"
+                android:layout_width="120dp"
+                android:layout_height="145dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +39,7 @@
                 app:layout_constraintTop_toTopOf="@id/img_poster">
 
                 <ImageView
+                    android:contentDescription="@string/rating_image"
                     android:id="@+id/img_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -63,8 +65,10 @@
                 style="@style/ItemTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/quarter_margin"
                 android:layout_marginTop="@dimen/quarter_padding"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/quarter_margin"
+                app:layout_constraintEnd_toEndOf="@id/img_poster"
                 app:layout_constraintStart_toStartOf="@id/img_poster"
                 app:layout_constraintTop_toBottomOf="@id/img_poster"
                 tools:text="Deadpool" />
@@ -74,7 +78,7 @@
                 style="@style/PrimaryItemGenre"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/tv_title"
                 app:layout_constraintStart_toStartOf="@id/tv_title"
                 app:layout_constraintTop_toBottomOf="@id/tv_title"
                 tools:text="Action, Adventure, Sci-Fi, Gore" />

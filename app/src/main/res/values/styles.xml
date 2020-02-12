@@ -159,11 +159,16 @@
 
     <style name="DetailSubTitle" parent="DetailTitle">
         <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">@font/nunito_sans_semibold</item>
+        <item name="android:fontFamily">@font/nunito_sans</item>
     </style>
 
     <style name="DetailText" parent="DetailSubTitle">
         <item name="android:fontFamily">@font/nunito_sans_light</item>
+    </style>
+
+    <style name="DetailTitleInfo" parent="DetailTitle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/nunito_sans_semibold</item>
     </style>
 
     <!--    Poster Style-->
@@ -188,8 +193,11 @@
 
     <!--    Setting preference-->
     <style name="SettingPrefStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:backgroundTint">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
     </style>
 
 </resources>

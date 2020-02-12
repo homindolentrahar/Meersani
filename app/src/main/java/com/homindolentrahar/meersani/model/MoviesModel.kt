@@ -56,9 +56,9 @@ data class MoviesDetail(
     @SerializedName("runtime")
     val runtime: Int,
     @SerializedName("budget")
-    val budget: Int,
+    val budget: Long,
     @SerializedName("revenue")
-    val revenue: Int,
+    val revenue: Long,
     @SerializedName("overview")
     val overview: String,
     @SerializedName("production_companies")

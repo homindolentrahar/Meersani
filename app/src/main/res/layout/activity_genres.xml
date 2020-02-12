@@ -4,26 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:padding="@dimen/margin"
-    tools:context=".ui.settings.SettingsActivity">
+    tools:context=".ui.genre.GenresActivity">
 
     <ImageView
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
-        android:contentDescription="@string/back"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_back_settings"
+        android:contentDescription="@string/back"
+        android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
+    <TextView
+        android:id="@+id/tv_genre"
+        style="@style/DetailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back"
+        tools:text="Adventure" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list_genre"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/btn_back"
-        app:layout_constraintTop_toBottomOf="@id/btn_back" />
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        tools:listitem="@layout/vertical_list_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

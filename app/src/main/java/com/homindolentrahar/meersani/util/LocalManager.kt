@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Build
-import androidx.core.content.edit
 import java.util.*
 
 object LocaleManager {
@@ -36,9 +35,7 @@ object LocaleManager {
 
     private fun persistLanguage(context: Context, language: String) {
         val pref = Constants.getDefaultSharedPreference(context)
-        pref.edit {
-            putString(LANG_KEY, language).commit()
-        }
+        pref.edit().putString(LANG_KEY,language).apply()
     }
 
     private fun updateResources(context: Context, language: String): Context {

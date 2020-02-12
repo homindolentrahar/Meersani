@@ -46,14 +46,14 @@ class DetailCategoriesActivity : BaseActivity() {
 
     private fun setupBanner(type: String) {
         val bannerTitle = when (type) {
-            Constants.TYPE_MOVIES_NOW_PLAYING -> "Now Playing"
-            Constants.TYPE_MOVIES_UPCOMING -> "Upcoming"
-            Constants.TYPE_MOVIES_POPULAR -> "Popular Movies"
-            Constants.TYPE_MOVIES_TOP_RATED -> "Top Rated Movies"
-            Constants.TYPE_SERIES_TODAY_AIRING -> "Today Airing"
-            Constants.TYPE_SERIES_ON_AIR -> "On Air"
-            Constants.TYPE_SERIES_POPULAR -> "Popular Series"
-            Constants.TYPE_SERIES_TOP_RATED -> "Top Rated Series"
+            Constants.TYPE_MOVIES_NOW_PLAYING -> getString(R.string.now_playing)
+            Constants.TYPE_MOVIES_UPCOMING -> getString(R.string.upcoming)
+            Constants.TYPE_MOVIES_POPULAR -> getString(R.string.popular)
+            Constants.TYPE_MOVIES_TOP_RATED -> getString(R.string.top_rated)
+            Constants.TYPE_SERIES_TODAY_AIRING -> getString(R.string.today_airing)
+            Constants.TYPE_SERIES_ON_AIR -> getString(R.string.on_air)
+            Constants.TYPE_SERIES_POPULAR -> getString(R.string.popular)
+            Constants.TYPE_SERIES_TOP_RATED -> getString(R.string.top_rated)
             else -> "No Title"
         }
         val bannerImage = if (type.contains("Movies", true)) R.drawable.film else R.drawable.tv

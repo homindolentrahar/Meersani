@@ -69,7 +69,7 @@ class MoviesFragment : DaggerFragment(), View.OnClickListener {
         btn_search.setOnClickListener {
             Constants.navigateToSearch(
                 context!!,
-                getString(R.string.movies)
+                "Movies"
             )
         }
         btn_settings.setOnClickListener {

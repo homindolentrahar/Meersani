@@ -29,6 +29,37 @@ class DataRepository @Inject constructor(
     private val disposable = CompositeDisposable()
     private val pageSize = 10
 
+//    Get Items by Genres
+//    Get Movies by Genres
+
+    fun getMoviesByGenres(genresId: Int): LiveData<PagedList<MoviesResult>> {
+        val dataSourceFactory = MoviesDataSourceFactory(
+            apiService,
+            Constants.TYPE_MOVIES_BY_GENRE,
+            Constants.NO_QUERY,
+            genresId
+        )
+        return LivePagedListBuilder(
+            dataSourceFactory,
+            Constants.getPagedListConfig(pageSize)
+        ).build()
+    }
+
+//    Get Series by Genres
+
+    fun getSeriesByGenres(genresId: Int): LiveData<PagedList<SeriesResult>> {
+        val dataSourceFactory = SeriesDataSourceFactory(
+            apiService,
+            Constants.TYPE_SERIES_BY_GENRE,
+            Constants.NO_QUERY,
+            genresId
+        )
+        return LivePagedListBuilder(
+            dataSourceFactory,
+            Constants.getPagedListConfig(pageSize)
+        ).build()
+    }
+
 //    Favorites database Operations
 
     fun checkExistedItem(itemId: Int): Flowable<List<Favorites>> {
@@ -39,11 +70,11 @@ class DataRepository @Inject constructor(
         return favoritesDao.getFavoritesByType(type)
     }
 
-    fun insert(item: Favorites):Completable {
+    fun insert(item: Favorites): Completable {
         return favoritesDao.insert(item)
     }
 
-    fun delete(itemId: Int):Completable {
+    fun delete(itemId: Int): Completable {
         return favoritesDao.delete(itemId)
     }
 
@@ -80,7 +111,7 @@ class DataRepository @Inject constructor(
 //    Paging
 
     fun getPagedMovies(type: String): LiveData<PagedList<MoviesResult>> {
-        val dataSourceFactory = MoviesDataSourceFactory(apiService, type, Constants.NO_QUERY)
+        val dataSourceFactory = MoviesDataSourceFactory(apiService, type, Constants.NO_QUERY, 0)
         return LivePagedListBuilder(
             dataSourceFactory,
             Constants.getPagedListConfig(pageSize)
@@ -88,7 +119,7 @@ class DataRepository @Inject constructor(
     }
 
     fun getPagedSeries(type: String): LiveData<PagedList<SeriesResult>> {
-        val dataSourceFactory = SeriesDataSourceFactory(apiService, type, Constants.NO_QUERY)
+        val dataSourceFactory = SeriesDataSourceFactory(apiService, type, Constants.NO_QUERY, 0)
         return LivePagedListBuilder(
             dataSourceFactory,
             Constants.getPagedListConfig(pageSize)
@@ -97,7 +128,7 @@ class DataRepository @Inject constructor(
 
     fun searchMovies(query: String): LiveData<PagedList<MoviesResult>> {
         val dataSourceFactory =
-            MoviesDataSourceFactory(apiService, Constants.TYPE_SEARCH_MOVIES, query)
+            MoviesDataSourceFactory(apiService, Constants.TYPE_SEARCH_MOVIES, query, 0)
         return LivePagedListBuilder(
             dataSourceFactory,
             Constants.getPagedListConfig(pageSize)
@@ -106,7 +137,7 @@ class DataRepository @Inject constructor(
 
     fun searchSeries(query: String): LiveData<PagedList<SeriesResult>> {
         val dataSourceFactory =
-            SeriesDataSourceFactory(apiService, Constants.TYPE_SEARCH_SERIES, query)
+            SeriesDataSourceFactory(apiService, Constants.TYPE_SEARCH_SERIES, query, 0)
         return LivePagedListBuilder(
             dataSourceFactory,
             Constants.getPagedListConfig(pageSize)

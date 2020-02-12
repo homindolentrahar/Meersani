@@ -38,6 +38,7 @@
     <string name="today_release_reminder">Info tentang Film rilis hari ini setiap jam 8 pagi</string>
     <string name="change_lang_summary">Ganti Bahasa Aplikasi</string>
     <string name="app_desc">Aplikasi katalog Film dan Serial TV</string>
+    <string name="rating_image">Gambar Rating</string>
 
     <string-array name="language_name">
         <item>English</item>

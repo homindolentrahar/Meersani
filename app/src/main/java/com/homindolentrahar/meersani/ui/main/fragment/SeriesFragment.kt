@@ -68,7 +68,7 @@ class SeriesFragment : DaggerFragment(), View.OnClickListener {
         btn_search.setOnClickListener {
             Constants.navigateToSearch(
                 context!!,
-                getString(R.string.series)
+                "Series"
             )
         }
         btn_settings.setOnClickListener { Constants.navigateToSettings(context!!) }

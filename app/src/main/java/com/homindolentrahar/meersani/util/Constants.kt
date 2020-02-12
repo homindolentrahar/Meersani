@@ -15,6 +15,7 @@ import com.homindolentrahar.meersani.model.GenresResult
 import com.homindolentrahar.meersani.model.ProductionCompanies
 import com.homindolentrahar.meersani.ui.categories.DetailCategoriesActivity
 import com.homindolentrahar.meersani.ui.detail.DetailItemActivity
+import com.homindolentrahar.meersani.ui.genre.GenresActivity
 import com.homindolentrahar.meersani.ui.search.SearchActivity
 import com.homindolentrahar.meersani.ui.settings.SettingsActivity
 import jp.wasabeef.glide.transformations.BlurTransformation
@@ -47,6 +48,9 @@ object Constants {
     const val TYPE_SEARCH_MOVIES = "search_movies"
     const val TYPE_SEARCH_SERIES = "search_series"
 
+    const val TYPE_MOVIES_BY_GENRE = "movies_by_genre"
+    const val TYPE_SERIES_BY_GENRE = "series_by_genre"
+
     const val TYPE_PRIMARY_HOLDER = "primary_holder"
     const val TYPE_NORMAL_HOLDER = "normal_holder"
 
@@ -74,6 +78,14 @@ object Constants {
     fun navigateToCategories(context: Context, type: String) {
         val intent = Intent(context, DetailCategoriesActivity::class.java)
         intent.putExtra(DetailCategoriesActivity.EXTRA_TYPE, type)
+        context.startActivity(intent)
+    }
+
+    fun navigateToGenres(context: Context, genresId: Int, name: String, type: String) {
+        val intent = Intent(context, GenresActivity::class.java)
+        intent.putExtra(GenresActivity.EXTRA_ID, genresId)
+        intent.putExtra(GenresActivity.EXTRA_NAME, name)
+        intent.putExtra(GenresActivity.EXTRA_TYPE, type)
         context.startActivity(intent)
     }
 
@@ -135,7 +147,7 @@ object Constants {
         return DateTimeFormatter.ofPattern("MMM dd, yyyy").format(currentDate)
     }
 
-    fun getFormattedCurrency(money: Int): String {
+    fun getFormattedCurrency(money: Long): String {
         val currencyFormatter = NumberFormat.getCurrencyInstance()
         currencyFormatter.maximumFractionDigits = 0
         currencyFormatter.currency = Currency.getInstance("USD")

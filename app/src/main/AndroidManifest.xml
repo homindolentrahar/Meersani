@@ -14,17 +14,18 @@
         android:roundIcon="@mipmap/ic_meersani_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.genre.GenresActivity" />
+
         <receiver
             android:name=".service.AlarmReceiver"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
 
         <activity android:name=".BaseActivity" />
         <activity
             android:name=".ui.settings.SettingsActivity"
             android:configChanges="orientation|locale"
-            android:screenOrientation="portrait"
-            android:theme="@style/SettingPrefStyle" />
+            android:screenOrientation="portrait" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

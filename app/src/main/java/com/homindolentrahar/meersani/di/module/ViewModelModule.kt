@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.homindolentrahar.meersani.ui.categories.DetailCategoriesViewModel
 import com.homindolentrahar.meersani.ui.detail.DetailItemViewModel
+import com.homindolentrahar.meersani.ui.genre.GenresViewModel
 import com.homindolentrahar.meersani.ui.main.fragment.favorites.viewmodel.FavoritesMoviesViewModel
 import com.homindolentrahar.meersani.ui.main.fragment.favorites.viewmodel.FavoritesSeriesViewModel
 import com.homindolentrahar.meersani.ui.main.fragment.viewmodel.MoviesViewModel
@@ -35,6 +36,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DetailItemViewModel::class)
     abstract fun bindDetailItemViewModel(viewModel: DetailItemViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(GenresViewModel::class)
+    abstract fun bindGenresViewModel(viewModel: GenresViewModel): ViewModel
 
     //    Fragment
     @Binds

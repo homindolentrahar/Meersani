@@ -124,4 +124,19 @@ interface APIService {
         @Query("primary_release_date.gte") dateGte: String,
         @Query("primary_release_date.lte") dateLte: String
     ): Flowable<MoviesResponse>
+
+    //    Get Items By Genres
+    @GET("discover/movie")
+    fun getMoviesByGenres(
+        @Query("api_key") key: String,
+        @Query("page") page: Int,
+        @Query("with_genres") genresId: Int
+    ): Flowable<MoviesResponse>
+
+    @GET("discover/tv")
+    fun getSeriesByGenres(
+        @Query("api_key") key: String,
+        @Query("page") page: Int,
+        @Query("with_genres") genresId: Int
+    ): Flowable<SeriesResponse>
 }

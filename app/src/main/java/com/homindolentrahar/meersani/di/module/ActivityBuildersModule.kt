@@ -2,6 +2,7 @@ package com.homindolentrahar.meersani.di.module
 
 import com.homindolentrahar.meersani.ui.categories.DetailCategoriesActivity
 import com.homindolentrahar.meersani.ui.detail.DetailItemActivity
+import com.homindolentrahar.meersani.ui.genre.GenresActivity
 import com.homindolentrahar.meersani.ui.main.MainActivity
 import com.homindolentrahar.meersani.ui.search.SearchActivity
 import com.homindolentrahar.meersani.ui.settings.SettingsActivity
@@ -24,4 +25,7 @@ abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeSettingsActivity(): SettingsActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeGenresActivity(): GenresActivity
 }

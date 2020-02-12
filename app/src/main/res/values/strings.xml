@@ -38,6 +38,7 @@
     <string name="today_release_reminder">Inform you about Today Released Movies every 8am</string>
     <string name="change_lang_summary">Change App Language</string>
     <string name="app_desc">Movies and Series Catalogue App</string>
+    <string name="rating_image">Rating Image</string>
 
     <string-array name="language_name">
         <item>English</item>

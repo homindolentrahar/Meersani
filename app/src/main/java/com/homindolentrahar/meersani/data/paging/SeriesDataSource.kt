@@ -14,7 +14,8 @@ import io.reactivex.schedulers.Schedulers
 class SeriesDataSource(
     private val apiService: APIService,
     private val type: String,
-    private val query: String
+    private val query: String,
+    private val genresId: Int
 ) :
     PageKeyedDataSource<Int, SeriesResult>() {
 
@@ -99,6 +100,11 @@ class SeriesDataSource(
                 BuildConfig.API_KEY,
                 query,
                 page
+            )
+            Constants.TYPE_SERIES_BY_GENRE -> apiService.getSeriesByGenres(
+                BuildConfig.API_KEY,
+                page,
+                genresId
             )
             else -> null
         }
